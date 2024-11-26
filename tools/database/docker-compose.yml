@@ -1,0 +1,50 @@
+services:
+  database:
+    container_name: task_manager_database
+    build:
+      context: ../../
+      dockerfile: tools/docker/development/Dockerfile.postgres
+    environment:
+      - POSTGRES_USER=task_manager
+      - POSTGRES_PASSWORD=12345678
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - task_manager_network
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "task_manager" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  redis:
+    container_name: task_manager_redis
+    build: 
+      context: ../../
+      dockerfile: tools/docker/development/Dockerfile.redis
+    environment:
+      - REDIS_USER=redis
+      - REDIS_PASSWORD=
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - task_manager_network
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+networks:
+  task_manager_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:

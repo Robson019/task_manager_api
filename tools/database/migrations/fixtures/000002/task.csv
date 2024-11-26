@@ -1,0 +1,6 @@
+id;title;description;status;created_at
+03b3aecd-1b52-4357-875c-298a4bc60132;Estudar Golang;Revisar fundamentos do Golang;pending;2024-11-25 10:00:00
+c91ae4fa-c042-4883-b763-72dd49137c40;Fazer exercício;Completar treino na academia;progress;2024-11-24 08:30:00
+9d51dfcc-f60f-45b8-a817-473ae48c07c8;Ler um livro;Ler capítulo 5 do livro de SQL;done;2024-11-20 21:15:00
+be868036-020c-4088-a1f5-a7258e4ea5f8;Comprar mantimentos;Ir ao mercado comprar frutas e vegetais;pending;2024-11-26 14:00:00
+d817474b-28ce-49e2-a75c-aa6a8ff8dc34;Revisar projeto;Revisar o código do CRUD de tarefas no Go;progress;2024-11-25 09:45:00

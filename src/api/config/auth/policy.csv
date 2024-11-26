@@ -1,0 +1,7 @@
+p, anonymous, \/api\/auth\/login, *
+p, anonymous, \/api\/auth\/refresh, *
+p, anonymous, \/api\/docs\/[^\r\n]*, *
+
+p, ROLE_USUARIO, \/api\/account\/[^\r\n]*, *
+p, ROLE_USUARIO, \/api\/tasks(\/[^\r\n]*)?, *
+p, ROLE_USUARIO, \/api\/auth\/logout, *
