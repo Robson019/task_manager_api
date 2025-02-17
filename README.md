@@ -41,16 +41,16 @@ O sistema se trata de uma API de gerenciamento de tarefas simplificada, visto qu
 
 ### Como clonar o projeto?
 
-1. Acesse o repositório do projeto: ADICIONAR LINK;
-2. Na linha de comando, execute: `git clone ADICIONAR LINK`.
+1. Acesse o repositório do projeto: https://github.com/Robson019/task_manager_api.git;
+2. Na linha de comando, execute: `git clone https://github.com/Robson019/task_manager_api.git`.
 
 ### Como rodar o projeto?
 
-1. Depoios de baixar e configurar corretamente todas as dependências do tópico [Quais são as ferramentas necessárias?](#quais-são-as-ferramentas-necessárias)
+1. Depois de baixar e configurar corretamente todas as dependências do tópico [Quais são as ferramentas necessárias?](#quais-são-as-ferramentas-necessárias)
 2. A partir da pasta raiz do projeto, acesse: `src/api/app`;
 3. Copie o arquivo `.env.example` no mesmo diretório e renomeie sua cópia como `.env` (este arquivo contém as informações de exemplo para uma configuração segura da API);
 4. Retorne até a pasta raiz do projeto `cd ../../..`;
-5. No terminal, execute o comando `./run.sh -backend` ou `source run.sh -backend` para executar todos os comandos de configuração do backend do projeto.
+5. No terminal, execute o comando `./run.sh -backend` ou `source run.sh -backend` para executar todos os comandos de configuração do backend do projeto (Lembre-se de configurar a quebra de linha desses arquivos como LF).
 6. Aguarde a finalização dos comandos e a execução do servidor.
 
 _**OBS.:** O tópico [Ferramentas de auxilio ao desenvolvimento](#ferramentas-de-auxilio-ao-desenvolvimento) explica detalhadamente sobre o funcionamento do script run.sh_
@@ -58,9 +58,9 @@ _**OBS.:** O tópico [Ferramentas de auxilio ao desenvolvimento](#ferramentas-de
 ### Como acessar a documentação das rotas?
 
 1. Abra um navegador com o servidor em execução;
-2. Acesse a URL http://localhost:8000/docs/;
+2. Acesse a URL http://localhost:8000/api/docs/index.html;
 3. Acesse a rota de **login** do módulo de **autenticação**;
-4. Loge com o usuário fictício `robson@gmail.com` para ter acesso as rotas não disponíveis ao usuário anônimo;
+4. Logue com o usuário fictício `robson@gmail.com` para ter acesso as rotas não disponíveis ao usuário anônimo;
 5. Com o token de acesso gerado, insira-o no campo de autorização, com o seguinte prefixo: `bearer [token gerado]`
 6. Teste o CRUD de **Tarefas** ou qualquer outra rota de sua escolha.
 
