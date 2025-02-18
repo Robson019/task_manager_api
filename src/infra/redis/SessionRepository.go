@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"task_manager/src/core/domain/authorization"
 	"task_manager/src/core/errors"
-	"task_manager/src/core/interfaces/repository"
+	"task_manager/src/core/interfaces/secondary"
 	"task_manager/src/core/messages"
 
 	"github.com/google/uuid"
 	"github.com/rs/zerolog/log"
 )
 
-var _ repository.SessionLoader = (*redisSessionRepository)(nil)
+var _ secondary.SessionLoader = (*redisSessionRepository)(nil)
 
 type redisSessionRepository struct {
 	connectorManager

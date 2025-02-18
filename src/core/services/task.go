@@ -6,13 +6,13 @@ import (
 	"task_manager/src/core/errors"
 	"task_manager/src/core/errors/logger"
 	"task_manager/src/core/interfaces/primary"
-	"task_manager/src/core/interfaces/repository"
+	"task_manager/src/core/interfaces/secondary"
 )
 
 var _ primary.TaskManager = (*TaskServices)(nil)
 
 type TaskServices struct {
-	taskRepository repository.TaskLoader
+	taskRepository secondary.TaskLoader
 	logger         logger.Logger
 }
 
@@ -71,7 +71,7 @@ func (instance TaskServices) DeleteTask(taskID uuid.UUID) errors.Error {
 	return nil
 }
 
-func NewTaskServices(taskRepository repository.TaskLoader, logger logger.Logger) *TaskServices {
+func NewTaskServices(taskRepository secondary.TaskLoader, logger logger.Logger) *TaskServices {
 	return &TaskServices{
 		taskRepository: taskRepository,
 		logger:         logger,

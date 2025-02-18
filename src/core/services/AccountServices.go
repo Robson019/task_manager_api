@@ -6,13 +6,13 @@ import (
 	"task_manager/src/core/errors"
 	"task_manager/src/core/errors/logger"
 	"task_manager/src/core/interfaces/primary"
-	"task_manager/src/core/interfaces/repository"
+	"task_manager/src/core/interfaces/secondary"
 )
 
 var _ primary.AccountManager = (*AccountServices)(nil)
 
 type AccountServices struct {
-	accountRepository repository.AccountLoader
+	accountRepository secondary.AccountLoader
 	logger            logger.Logger
 }
 
@@ -26,7 +26,7 @@ func (instance AccountServices) FetchProfileByID(accountID uuid.UUID) (*account.
 	return accountInstance, nil
 }
 
-func NewAccountServices(AccountRepository repository.AccountLoader, logger logger.Logger) *AccountServices {
+func NewAccountServices(AccountRepository secondary.AccountLoader, logger logger.Logger) *AccountServices {
 	return &AccountServices{
 		accountRepository: AccountRepository,
 		logger:            logger,

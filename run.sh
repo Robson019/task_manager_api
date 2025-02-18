@@ -5,6 +5,11 @@ function run_backend() {
     ./tools/executables/scripts/backend.sh
 }
 
+function run_mockgen() {
+    chmod +x ./tools/executables/scripts/mockgen.sh
+    ./tools/executables/scripts/mockgen.sh "$@"
+}
+
 function run_sqlc() {
     chmod +x ./tools/executables/scripts/sqlc.sh
     ./tools/executables/scripts/sqlc.sh
@@ -13,6 +18,10 @@ function run_sqlc() {
 case "$1" in
     -backend)
         run_backend
+        ;;
+    -mockgen)
+        shift
+        run_mockgen "$@"
         ;;
     -sqlc)
         run_sqlc

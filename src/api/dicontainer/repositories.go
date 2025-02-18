@@ -1,24 +1,24 @@
 package dicontainer
 
 import (
-	"task_manager/src/core/interfaces/repository"
+	"task_manager/src/core/interfaces/secondary"
 	"task_manager/src/infra/postgres"
 	"task_manager/src/infra/redis"
 )
 
-func GetAuthRepository() repository.AuthLoader {
+func GetAuthRepository() secondary.AuthLoader {
 	return postgres.NewAuthPostgresRepository(GetPsqlConnectionManager())
 }
 
-func GetAccountRepository() repository.AccountLoader {
+func GetAccountRepository() secondary.AccountLoader {
 	return postgres.NewAccountPostgresRepository(GetPsqlConnectionManager())
 }
 
-func GetTaskRepository() repository.TaskLoader {
+func GetTaskRepository() secondary.TaskLoader {
 	return postgres.NewTaskPostgresRepository(GetPsqlConnectionManager())
 }
 
-func GetSessionRepository() repository.SessionLoader {
+func GetSessionRepository() secondary.SessionLoader {
 	return redis.NewSessionRepository(GetRedisConnectionManager())
 }
 

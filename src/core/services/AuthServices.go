@@ -6,7 +6,7 @@ import (
 	"task_manager/src/core/errors"
 	"task_manager/src/core/errors/logger"
 	"task_manager/src/core/interfaces/primary"
-	"task_manager/src/core/interfaces/repository"
+	"task_manager/src/core/interfaces/secondary"
 	"task_manager/src/core/messages"
 	"task_manager/src/utils/encrypt"
 
@@ -16,9 +16,9 @@ import (
 var _ primary.AuthManager = (*AuthServices)(nil)
 
 type AuthServices struct {
-	accountRepository repository.AccountLoader
-	sessionRepository repository.SessionLoader
-	authRepository    repository.AuthLoader
+	accountRepository secondary.AccountLoader
+	sessionRepository secondary.SessionLoader
+	authRepository    secondary.AuthLoader
 	logger            logger.Logger
 }
 
@@ -103,7 +103,7 @@ func (instance AuthServices) Logout(accountID uuid.UUID) errors.Error {
 	return nil
 }
 
-func NewAuthServices(authRepository repository.AuthLoader, accountRepository repository.AccountLoader, sessionRepository repository.SessionLoader, logger logger.Logger) *AuthServices {
+func NewAuthServices(authRepository secondary.AuthLoader, accountRepository secondary.AccountLoader, sessionRepository secondary.SessionLoader, logger logger.Logger) *AuthServices {
 	return &AuthServices{
 		sessionRepository: sessionRepository,
 		authRepository:    authRepository,

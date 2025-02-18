@@ -1,4 +1,4 @@
-package repository
+package secondary
 
 import (
 	"task_manager/src/core/domain/account"

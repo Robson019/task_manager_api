@@ -5,12 +5,12 @@ import (
 	"github.com/google/uuid"
 	"task_manager/src/core/domain/task"
 	"task_manager/src/core/errors"
-	"task_manager/src/core/interfaces/repository"
+	"task_manager/src/core/interfaces/secondary"
 	"task_manager/src/core/messages"
 	"task_manager/src/infra/postgres/bridge"
 )
 
-var _ repository.TaskLoader = &TaskPostgresRepository{}
+var _ secondary.TaskLoader = &TaskPostgresRepository{}
 
 type TaskPostgresRepository struct {
 	connectorManager

@@ -6,7 +6,7 @@ import (
 	"task_manager/src/core/domain/account"
 	"task_manager/src/core/domain/account/role"
 	"task_manager/src/core/errors"
-	"task_manager/src/core/interfaces/repository"
+	"task_manager/src/core/interfaces/secondary"
 	"task_manager/src/core/messages"
 	"task_manager/src/infra/postgres/bridge"
 	postgresmsgs "task_manager/src/infra/postgres/messages"
@@ -14,7 +14,7 @@ import (
 	"github.com/google/uuid"
 )
 
-var _ repository.AccountLoader = &AccountPostgresRepository{}
+var _ secondary.AccountLoader = &AccountPostgresRepository{}
 
 type AccountPostgresRepository struct {
 	connectorManager
@@ -61,6 +61,6 @@ func (instance AccountPostgresRepository) handleError(err error) errors.Error {
 	return errors.NewUnexpectedError(messages.UnexpectedErrorMessage, err)
 }
 
-func NewAccountPostgresRepository(manager connectorManager) repository.AccountLoader {
+func NewAccountPostgresRepository(manager connectorManager) secondary.AccountLoader {
 	return &AccountPostgresRepository{manager}
 }

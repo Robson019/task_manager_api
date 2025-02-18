@@ -7,13 +7,13 @@ import (
 	"task_manager/src/core/domain/account/credentials"
 	"task_manager/src/core/domain/account/role"
 	"task_manager/src/core/errors"
-	"task_manager/src/core/interfaces/repository"
+	"task_manager/src/core/interfaces/secondary"
 	"task_manager/src/core/messages"
 	"task_manager/src/infra/postgres/bridge"
 	postgresmsgs "task_manager/src/infra/postgres/messages"
 )
 
-var _ repository.AuthLoader = &AuthPostgresRepository{}
+var _ secondary.AuthLoader = &AuthPostgresRepository{}
 
 type AuthPostgresRepository struct {
 	connectorManager
@@ -60,6 +60,6 @@ func (instance AuthPostgresRepository) handleError(err error) errors.Error {
 	return errors.NewUnexpectedError(messages.UnexpectedErrorMessage, err)
 }
 
-func NewAuthPostgresRepository(manager connectorManager) repository.AuthLoader {
+func NewAuthPostgresRepository(manager connectorManager) secondary.AuthLoader {
 	return &AuthPostgresRepository{manager}
 }

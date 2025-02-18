@@ -11,8 +11,10 @@ services:
         - https_proxy:'http://proxy.mycompany.com:10080'
     env_file: src/api/app/.env
     depends_on:
-      - database
-      - redis
+      database:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     ports:
       - "8000:8000"
     networks:
@@ -33,9 +35,9 @@ services:
       - task_manager_network
     healthcheck:
       test: [ "CMD", "pg_isready", "-U", "task_manager" ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+      interval: 10s
+      timeout: 5s
+      retries: 5
       start_period: 10s
 
   redis:

@@ -60,7 +60,7 @@ _**OBS.:** O tópico [Ferramentas de auxilio ao desenvolvimento](#ferramentas-de
 1. Abra um navegador com o servidor em execução;
 2. Acesse a URL http://localhost:8000/api/docs/index.html;
 3. Acesse a rota de **login** do módulo de **autenticação**;
-4. Logue com o usuário fictício `robson@gmail.com` para ter acesso as rotas não disponíveis ao usuário anônimo;
+4. Logue com o usuário fictício `robson@gmail.com` e senha `Test1234!` para ter acesso as rotas não disponíveis ao usuário anônimo;
 5. Com o token de acesso gerado, insira-o no campo de autorização, com o seguinte prefixo: `bearer [token gerado]`
 6. Teste o CRUD de **Tarefas** ou qualquer outra rota de sua escolha.
 
