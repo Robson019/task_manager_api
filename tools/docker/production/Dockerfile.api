@@ -10,8 +10,8 @@ ENV DATABASE_SSL_MODE=disable
 # Install third-party binary dependencies
 ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh /opt/bin/
 RUN chmod +x /opt/bin/wait-for-it.sh
-RUN apt-get update
-RUN apt-get install dos2unix
+RUN apk update
+RUN apk add dos2unix
 RUN go install -tags 'postgres' github.com/golang-migrate/migrate/v4/cmd/migrate@v4.18.2
 RUN go install github.com/swaggo/swag/cmd/swag@v1.16.2
 
