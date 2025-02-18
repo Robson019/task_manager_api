@@ -44,11 +44,11 @@ jobs:
 
       - name: Build and Tag API Image
         run: | 
-          docker build -t robson022/task_manager_api:${{ steps.generate_tag.outputs.sha }} -f tools/docker/development/Dockerfile.api .
+          docker build -t robson022/task_manager_api:${{ steps.generate_tag.outputs.sha }} -f tools/docker/production/Dockerfile.api .
 
       - name: Build and Tag Database Image
         run: |
-          docker build -t robson022/task_manager_database:${{ steps.generate_tag.outputs.sha }} -f tools/docker/development/Dockerfile.postgres .
+          docker build -t robson022/task_manager_database:${{ steps.generate_tag.outputs.sha }} -f tools/docker/production/Dockerfile.postgres .
 
       - name: Push API Image to DockerHub
         run: |
