@@ -22,7 +22,8 @@ COPY go.mod go.mod
 
 # Install dependencies and Build application
 RUN go mod tidy
-RUN sh -c "cd src/api/app && swag init -g ../api.go --output ../docs --dir ../handlers"
+RUN apk add --no-cache bash
+RUN bash -c "cd src/api/app && swag init -g ../api.go --output ../docs --dir ../handlers"
 RUN go build -o ./main ./src/api/app/main.go
 RUN chmod +x ./src/api/app/start.sh
 RUN dos2unix ./src/api/app/start.sh
