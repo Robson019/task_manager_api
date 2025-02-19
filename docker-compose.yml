@@ -9,7 +9,6 @@ services:
         - HTTPS_PROXY:'http://proxy.mycompany.com:10080'
         - http_proxy:'http://proxy.mycompany.com:10080'
         - https_proxy:'http://proxy.mycompany.com:10080'
-    env_file: src/api/app/.env
     depends_on:
       database:
         condition: service_healthy
