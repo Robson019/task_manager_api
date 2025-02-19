@@ -23,6 +23,7 @@ services:
     image: robson022/task_manager_database:${DOCKER_IMAGE_TAG}
     env_file: .env
     environment:
+      POSTGRES_USER: task_manager
       POSTGRES_PASSWORD: 12345678
     ports:
       - "5432:5432"
