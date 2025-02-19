@@ -85,12 +85,10 @@ jobs:
           script: |
             # Extract the tag on job build
             TAG=${{ needs.build.outputs.docker_tag }}
-            # Create .env file with required variables
+            # Create env file
             [ -e .env ] && rm .env
             touch .env
-            echo "DOCKER_IMAGE_TAG=$TAG" > .env
-            echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> .env
-            echo "DATABASE_PORT=${{ secrets.DATABASE_PORT }}" >> .env
+            echo  "DOCKER_IMAGE_TAG=$TAG" > .env
             # Login Docker
             docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
             # Pulling Images
