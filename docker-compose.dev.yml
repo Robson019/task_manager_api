@@ -1,20 +1,29 @@
 services:
   api:
     container_name: task_manager_api
-    image: robson022/task_manager_api:${DOCKER_IMAGE_TAG}
-    ports:
-      - "8000:8000"
-    networks:
-      - task_manager_network
+    build:
+      context: .
+      dockerfile: tools/docker/production/Dockerfile.api
+      args:
+        - HTTP_PROXY:'http://proxy.mycompany.com:10080'
+        - HTTPS_PROXY:'http://proxy.mycompany.com:10080'
+        - http_proxy:'http://proxy.mycompany.com:10080'
+        - https_proxy:'http://proxy.mycompany.com:10080'
     depends_on:
       database:
         condition: service_healthy
       redis:
         condition: service_healthy
+    ports:
+      - "8000:8000"
+    networks:
+      - task_manager_network
 
   database:
     container_name: task_manager_database
-    image: robson022/task_manager_database:${DOCKER_IMAGE_TAG}
+    build:
+      context: .
+      dockerfile: tools/docker/production/Dockerfile.postgres
     ports:
       - "5432:5432"
     volumes:
