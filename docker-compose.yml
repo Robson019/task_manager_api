@@ -25,8 +25,6 @@ services:
     build:
       context: .
       dockerfile: tools/docker/production/Dockerfile.postgres
-    env_file:
-      - src/api/app/.env
     ports:
       - "5432:5432"
     volumes:
