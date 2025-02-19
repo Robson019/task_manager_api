@@ -3,6 +3,9 @@ services:
     container_name: task_manager_api
     image: robson022/task_manager_api:${DOCKER_IMAGE_TAG}
     env_file: .env
+    environment:
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_PORT=${DATABASE_PORT}
     ports:
       - "8000:8000"
     networks:
