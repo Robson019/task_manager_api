@@ -30,7 +30,8 @@ services:
       - "5432:5432"
     restart: always
     volumes:
-      - ./tools/database/init.sql:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
+      - ./tools/database/init.sql:/docker-entrypoint-initdb.d/init-database.sql:ro
     networks:
       - task_manager_network
     healthcheck:
@@ -48,7 +49,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - ./tools/database/redis.conf:/data
+      - redis_data:/data
     networks:
       - task_manager_network
     healthcheck:
