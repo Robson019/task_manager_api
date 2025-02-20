@@ -27,7 +27,6 @@ jobs:
       - name: Building and Running Tests
         run: |
           go mod tidy
-          go build -v ./...
           go test ./... -v
 
       - name: Generate Tag
