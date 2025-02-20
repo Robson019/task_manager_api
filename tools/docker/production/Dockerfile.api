@@ -1,5 +1,8 @@
 FROM golang:1.22-alpine
 
+# Install required build tools and dependencies
+RUN apk add --no-cache bash git gcc musl-dev curl
+
 WORKDIR /backend
 
 # Setup default ENV
@@ -10,10 +13,10 @@ ENV DATABASE_SSL_MODE=disable
 # Install third-party binary dependencies
 ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh /opt/bin/
 RUN chmod +x /opt/bin/wait-for-it.sh
-RUN apk update
-RUN apk add dos2unix
-RUN go install -tags 'postgres' github.com/golang-migrate/migrate/v4/cmd/migrate@v4.18.2
-RUN go install github.com/swaggo/swag/cmd/swag@v1.16.2
+RUN apt-get update
+RUN apt-get install dos2unix
+RUN go install -tags 'postgres' github.com/golang-migrate/migrate/v4/cmd/migrate@latest
+RUN go install github.com/swaggo/swag/cmd/swag@latest
 
 # Copy application files
 RUN mkdir tools
@@ -22,7 +25,6 @@ COPY go.mod go.mod
 
 # Install dependencies and Build application
 RUN go mod tidy
-RUN apk add --no-cache bash
 RUN bash -c "cd src/api/app && swag init -g ../api.go --output ../docs --dir ../handlers"
 RUN go build -o ./main ./src/api/app/main.go
 RUN chmod +x ./src/api/app/start.sh
