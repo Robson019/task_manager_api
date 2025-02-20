@@ -3,11 +3,6 @@ services:
     container_name: task_manager_api
     image: robson022/task_manager_api:${DOCKER_IMAGE_TAG}
     env_file: .env
-    environment:
-      -DATABASE_HOST=database
-      -DATABASE_PORT=5432
-      -DATABASE_USER=task_manager
-      -DATABASE_PASSWORD=12345678
     ports:
       - "8000:8000"
     networks:
@@ -22,10 +17,6 @@ services:
     container_name: task_manager_database
     image: robson022/task_manager_database:${DOCKER_IMAGE_TAG}
     env_file: .env
-    environment:
-      -POSTGRES_USER=task_manager
-      -POSTGRES_PASSWORD=12345678
-      -POSTGRES_DB=postgres
     ports:
       - "5432:5432"
     volumes:
