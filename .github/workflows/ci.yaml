@@ -89,6 +89,7 @@ jobs:
             [ -e .env ] && rm .env
             touch .env
             echo  "DOCKER_IMAGE_TAG=$TAG" > .env
+            echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
             # Login Docker
             docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
             # Pulling Images
