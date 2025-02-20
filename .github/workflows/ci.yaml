@@ -97,6 +97,10 @@ jobs:
             echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> .env
             echo "SERVER_CASBIN_AUTH_MODEL=${{ secrets.SERVER_CASBIN_AUTH_MODEL }}" >> .env
             echo "SERVER_CASBIN_AUTH_POLICY=${{ secrets.SERVER_CASBIN_AUTH_POLICY }}" >> .env
+            echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}" >> .env
+            echo "DATABASE_SSL_MODE=${{ secrets.DATABASE_SSL_MODE }}" >> .env
+            echo "DATABASE_SCHEMA=${{ secrets.DATABASE_SCHEMA }}" >> .env
+            echo "DATABASE_MIGRATIONS_PATH=${{ secrets.DATABASE_MIGRATIONS_PATH }}" >> .env
             # Login Docker
             docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
             # Pulling Images

@@ -1,5 +1,8 @@
 FROM golang:1.22-alpine
 
+# Install required build tools and dependencies
+RUN apk add --no-cache bash git gcc musl-dev curl
+
 WORKDIR /backend
 
 # Setup default ENV
@@ -22,7 +25,6 @@ COPY go.mod go.mod
 
 # Install dependencies and Build application
 RUN go mod tidy
-RUN apk add --no-cache bash
 RUN bash -c "cd src/api/app && swag init -g ../api.go --output ../docs --dir ../handlers"
 RUN go build -o ./main ./src/api/app/main.go
 RUN chmod +x ./src/api/app/start.sh
@@ -31,4 +33,4 @@ RUN dos2unix ./src/api/app/start.sh
 # Copy application database migrations
 COPY tools/database ./tools/database
 
-CMD /opt/bin/wait-for-it.sh --timeout=20 $DATABASE_HOST:$DATABASE_PORT -- ./src/api/app/start.sh
+CMD bash -c /opt/bin/wait-for-it.sh --timeout=20 $DATABASE_HOST:$DATABASE_PORT -- ./src/api/app/start.sh
