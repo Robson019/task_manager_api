@@ -21,6 +21,11 @@ type TaskHandlers struct {
 // @Summary Criar tarefa
 // @Tags Tarefas
 // @Description Rota que permite a criação de uma tarefa pelo usuário.
+// @Description | Status  |
+// @Description |---------|
+// @Description | pending |
+// @Description | progress |
+// @Description | done |
 // @Security bearerAuth
 // @Param json body request.TaskDTO true "JSON com todos os dados necessários para criar uma tarefa."
 // @Accept json

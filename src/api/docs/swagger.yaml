@@ -309,7 +309,13 @@ paths:
     post:
       consumes:
       - application/json
-      description: Rota que permite a criação de uma tarefa pelo usuário.
+      description: |-
+        Rota que permite a criação de uma tarefa pelo usuário.
+        | Status  |
+        |---------|
+        | pending |
+        | progress |
+        | done |
       operationId: CreateTask
       parameters:
       - description: JSON com todos os dados necessários para criar uma tarefa.

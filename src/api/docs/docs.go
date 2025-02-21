@@ -335,7 +335,7 @@ const docTemplate = `{
                         "bearerAuth": []
                     }
                 ],
-                "description": "Rota que permite a criação de uma tarefa pelo usuário.",
+                "description": "Rota que permite a criação de uma tarefa pelo usuário.\n| Status  |\n|---------|\n| pending |\n| progress |\n| done |",
                 "consumes": [
                     "application/json"
                 ],
