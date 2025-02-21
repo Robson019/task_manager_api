@@ -119,6 +119,11 @@ func (instance TaskHandlers) FindTaskByID(ctx echo.Context) error {
 // @Summary Atualizar tarefa
 // @Tags Tarefas
 // @Description Rota que permite a atualização de uma tarefa pelo usuário.
+// @Description | Status  |
+// @Description |---------|
+// @Description | pending |
+// @Description | progress |
+// @Description | done |
 // @Security bearerAuth
 // @Accept json
 // @Param id path string true "ID da tarefa." default(03b3aecd-1b52-4357-875c-298a4bc60132)

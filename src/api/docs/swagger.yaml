@@ -444,7 +444,13 @@ paths:
     put:
       consumes:
       - application/json
-      description: Rota que permite a atualização de uma tarefa pelo usuário.
+      description: |-
+        Rota que permite a atualização de uma tarefa pelo usuário.
+        | Status  |
+        |---------|
+        | pending |
+        | progress |
+        | done |
       operationId: UpdateTask
       parameters:
       - default: 03b3aecd-1b52-4357-875c-298a4bc60132
